@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Створити нову тему</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Створити нову тему</h1>
+        <a href="/" class="button">Повернутися до списку тем</a>
+        <form action="/create_topic" method="post">
+            <input type="text" name="title" placeholder="Назва теми" required>
+            <input type="text" name="author" placeholder="Ваше ім'я" required>
+            <button type="submit" class="button">Створити тему</button>
+        </form>
+    </div>
+</body>
+</html>

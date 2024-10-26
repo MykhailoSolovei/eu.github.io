@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форум Європейського університету</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Форум Європейського університету</h1>
+        <a href="{{ url_for('create_topic') }}" class="button">Створити нову тему</a>
+
+        <div class="topics">
+            <h2>Список тем</h2>
+            <ul>
+                {% for topic in topics %}
+                    <li><a href="/topic/{{ topic.id }}">{{ topic.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <form action="{{ url_for('clear_data') }}" method="post">
+            <button type="submit" class="button">Очистить все данные</button>
+        </form>
+        
+    </div>
+</body>
+</html>

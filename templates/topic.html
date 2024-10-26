@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ topic['title'] }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ topic['title'] }}</h1>
+        <a href="/" class="button">Повернутися до списку тем</a>
+        <div class="posts">
+            <h2>Повідомлення</h2>
+            {% for post in posts %}
+            <div class="post">
+                <p><strong>Автор:</strong> {{ post['author'] }}</p>
+                <p>{{ post['content'] }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="add-post">
+            <h2>Додати нове повідомлення</h2>
+            <form action="{{ url_for('add_post', topic_id=topic['id']) }}" method="post">
+                <input type="text" name="author" placeholder="Ваше ім'я" required>
+                <textarea name="content" placeholder="Текст повідомлення" required></textarea>
+                <button type="submit" class="button">Відправити</button>
+            </form>
+        </div>
+        
+    </div>
+</body>
+</html>
